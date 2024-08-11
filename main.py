@@ -1,45 +1,51 @@
 import csv
 import pandas as pd
 
-#View all the employees
-def readFile(__file):
-    df = pd.read_csv(__file)
-    print(df)
+class Employees:
+    #View all the employees
+    @classmethod
+    def readFile(__file):
+        print()
+        df = pd.read_csv(__file)
+        print(df)
+        print()
 
-#Add Employees
-def AddEmployee(__file):
-    #Get details of the employee to add
-    id = input("ID: ")
-    FirstName = input("First Name: ")
-    LastName = input("Last Name: ")
-    Position = input("Position: ")
-    Department = input("Department: ")
-    Salary = input("Salary: ")
+    #Add Employees
+    @classmethod
+    def AddEmployee(__file):
+        #Get details of the employee to add
+        id = input("ID: ")
+        FirstName = input("First Name: ")
+        LastName = input("Last Name: ")
+        Position = input("Position: ")
+        Department = input("Department: ")
+        Salary = input("Salary: ")
 
-    #Add a new row to the csv file and add the employee
-    with open(__file, 'a', newline='') as __file:
-        writer = csv.writer(__file)
-        writer.writerow([id, FirstName, LastName, Position, Department, Salary])
+        #Add a new row to the csv file and add the employee
+        with open(__file, 'a', newline='') as __file:
+            writer = csv.writer(__file)
+            writer.writerow([id, FirstName, LastName, Position, Department, Salary])
 
-#Delete Employees
-def deleteEmployees(__file):
-    id_to_delete = input("Enter the ID of the employee you want to delete: ")
+    #Delete Employees
+    @classmethod
+    def deleteEmployees(__file):
+        id_to_delete = input("Enter the ID of the employee you want to delete: ")
 
-    # Read all rows except the one to delete
-    rows = []
-    with open(__file, 'r') as __file:
-        reader = csv.reader(__file)
-        for row in reader:
-            if row[0] != id_to_delete:  # Assuming the ID is in the first column
-                rows.append(row)
+        # Read all rows except the one to delete
+        rows = []
+        with open(__file, 'r') as __file:
+            reader = csv.reader(__file)
+            for row in reader:
+                if row[0] != id_to_delete:  # Assuming the ID is in the first column
+                    rows.append(row)
 
-    # Write the remaining rows back to the file
-    with open(__file.name, 'w', newline='') as __file:
-        writer = csv.writer(__file)
-        writer.writerows(rows)
+        # Write the remaining rows back to the file
+        with open(__file.name, 'w', newline='') as __file:
+            writer = csv.writer(__file)
+            writer.writerows(rows)
 
-    print(f"Employee with ID {id_to_delete} has been deleted.")
-    print()
+        print(f"Employee with ID {id_to_delete} has been deleted.")
+        print()
 
 #Main Funtion
 def main():
@@ -47,25 +53,29 @@ def main():
         print("1. See employees")
         print("2. Add employees")
         print("3. Delete employees")
-        print("4. Exit")
+        print("4. Search employees")
+        print("5. Exit")
 
-        c = input("Your choice(1/2/3/4): ")
+        c = input("Your choice(1/2/3/4/5): ")
 
         file = 'contacts.csv'
 
         if c == "1":
-            readFile(file)
+            Employees.readFile(file)
             print()
 
         elif c == "2":
-            AddEmployee(file)
+            Employees.AddEmployee(file)
             print()
 
         elif c == "3":
-            deleteEmployees(file)
+            Employees.deleteEmployees(file)
             print()
         
         elif c == "4":
+            continue
+
+        elif c == "5":
             break
 
 #Executing the main function
