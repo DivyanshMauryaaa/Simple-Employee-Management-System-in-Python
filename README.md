@@ -18,5 +18,5 @@ This Python program allows you to manage employee records stored in a CSV file. 
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/yourusername/employeemanagement.git](https://github.com/DivyanshMauryaaa/Simple-Employee-Management-System-in-Python.git
+   git clone https://github.com/DivyanshMauryaaa/Simple-Employee-Management-System-in-Python.git
    cd Simple-Employee-Management-System-in-Python
